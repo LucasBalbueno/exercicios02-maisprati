@@ -2,26 +2,20 @@ const generateMatriz = require('./functions/generateMatriz.js');
 
 const lines = 10;
 const columns = 10;
-// const matriz = generateMatriz(lines, columns);
+const matriz = generateMatriz(lines, columns);
 
-const matriz = [
-    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    [2, 3, 4, 5, 6, 7, 8, 9, 10, 1],
-    [3, 4, 5, 6, 7, 8, 9, 10, 1, 2],
-    [4, 5, 6, 7, 8, 9, 10, 1, 2, 3],
-    [5, 6, 7, 8, 9, 10, 1, 2, 3, 4],
-    [6, 7, 8, 9, 10, 1, 2, 3, 4, 5],
-    [7, 8, 9, 10, 1, 2, 3, 4, 5, 6],
-    [8, 9, 10, 1, 2, 3, 4, 5, 6, 7],
-    [9, 10, 1, 2, 3, 4, 5, 6, 7, 8],
-    [10, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-];
-
+let diagUp = 0;
+let diagDown = 0;
 
 for (let i = 0; i < lines; i++) {
     for (let j = 0; j < columns; j++) {
-        matriz[i][j]
-    }
-}
+        if (j > i) {
+            diagUp += matriz[i][j];
+        } else if (j < i) {
+            diagDown += matriz[i][j];
+        };
+    };
+};
 
-console.log(matriz)
+console.log('Soma dos elemento acima da diagonal principal da matriz:', diagUp.toFixed(2));
+console.log('Soma dos elemento abaixo da diagonal principal da matriz:', diagDown.toFixed(2));

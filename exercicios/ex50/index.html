@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de hótéis</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+</head>
+
+<body>
+    <header id="cabecalho">
+        <div class="slogan">
+            <p class="slogan-texto">O melhor site de reservas do Brasil!</p>
+        </div>
+        <h1 class="cabecalho-titulo">The Plaza Reservas</h1>
+    </header>
+    <main id="container-principal">
+        <section id="secao-adicionarHotel">
+            <h2>Adicionar Hotel</h2>
+            <div class="container-infos">
+                <form id="formAdicionaHotel">
+                    <div class="inputData">
+                        <label>Nome do hotel:</label>
+                        <input type="text" name="nameHotel" placeholder="Digite o nome do hotel...">
+                    </div>
+                    <div class="inputData">
+                        <label>Cidade do hotel:</label>
+                        <input type="text" name="cityHotel" placeholder="Digite a cidade do hotel...">
+                    </div>
+                    <div class="inputData">
+                        <label>Quartos ao total:</label>
+                        <input type="number" name="totalRooms" min="0" placeholder="0">
+                    </div>
+                    <div class="inputData">
+                        <label>Quartos disponíveis:</label>
+                        <input type="number" name="availableRooms" min="0" placeholder="0">
+                    </div>
+                    <button type="submit">Adicionar Hotel</button>
+                </form>
+
+                <div class="boxResposta">
+                    <p id="respAdicionaHotel">Aguarde aqui sua resposta...</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="secao-buscarHotel">
+            <h2>Buscar Hotel</h2>
+            <div class="container-infos">
+                <form id="formBuscaHotel">
+                    <div class="inputData">
+                        <label>Cidade:</label>
+                        <input type="text" name="cityHotel" placeholder="Digite a cidade do hotel...">
+                    </div>
+                    <button type="submit">Buscar Hotel</button>
+                </form>
+
+                <div class="boxResposta">
+                    <p id="respBuscaHotel">Aguarde aqui sua resposta...</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Fazer Reserva</h2>
+            <div class="container-infos">
+                <form id="formFazerReserva">
+                    <div class="inputData">
+                        <label>Seu nome:</label>
+                        <input type="text" name="clientName" placeholder="Digite o seu nome">
+                    </div>
+                    <div class="inputData">
+                        <label>id do Hotel:</label>
+                        <input type="text" name="idHotel" placeholder="Digite o id do hotel">
+                    </div>
+                    <div class="inputData">
+                        <label>Data da reserva:</label>
+                        <input type="date" name="bookedDate">
+                    </div>
+                    <button type="submit">Fazer Reserva</button>
+                </form>
+
+                <div class="boxResposta">
+                    <p id="respFazerReserva">Aguarde aqui sua resposta...</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Cancelar Reserva</h2>
+            <div class="container-infos">
+                <form id="formCancelarReserva">
+                    <div class="inputData">
+                        <label>Seu nome:</label>
+                        <input type="text" name="clientName" placeholder="Digite o seu nome">
+                    </div>
+                    <div class="inputData">
+                        <label>id da Reserva:</label>
+                        <input type="text" name="idbooked" placeholder="Digite o id da reserva">
+                    </div>
+                    <div class="inputData">
+                        <label>id do Hotel:</label>
+                        <input type="text" name="idHotel" placeholder="Digite o id do hotel">
+                    </div>
+                    <div class="inputData">
+                        <label>Data da reserva:</label>
+                        <input type="date" name="bookedDate">
+                    </div>
+                    <button type="submit">Cancelar Reserva</button>
+                </form>
+
+                <div class="boxResposta">
+                    <p id="respCancelarReserva">Aguarde aqui sua resposta...</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Listar Reservas</h2>
+            <div class="container-infos">
+                <form id="formListarReservas">
+                    <div class="inputData">
+                        <label>Nome:</label>
+                        <input type="text" name="nameClient" placeholder="Digite o seu nome">
+                    </div>
+                    <button type="submit">Listar suas reservas</button>
+                </form>
+
+                <div class="boxResposta">
+                    <p id="respListarReservas">Aguarde aqui sua resposta...</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer id="rodape">
+        <p>Desenvolvido por Lucas Balbueno</p>
+        <a href="https://www.linkedin.com/in/lucasbalbueno/" target="_blank"><img src="./src/images/linkedinLogo.png" alt="Logo Linkedin"></a>
+        <a href="https://github.com/LucasBalbueno" target="_blank"><img src="./src/images/githubLogo.png" alt="Logo GitHub"></a>
+    </footer>
+
+    <script type="module" src="./src/js/index.js"></script>
+</body>
+</html>

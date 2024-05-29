@@ -18,12 +18,13 @@ class reserva {
 };
 
 export default class sistemaHoteis {
-    constructor () {
+    constructor() {
         this.hoteis = [];
         this.reservas = [];
+        this.checkIns =[];
     };
 
-    adicionaHotel (id, nome, cidade, quartosTotais, quartosDisponiveis) {
+    adicionaHotel(id, nome, cidade, quartosTotais, quartosDisponiveis) {
         let respostaCliente = [];
 
         if (quartosTotais >= quartosDisponiveis) {
@@ -37,11 +38,11 @@ export default class sistemaHoteis {
         return respostaCliente.join('\n');
     };
 
-    buscaHotel (buscaCidade) {
+    buscaHotel(buscaCidade) {
         let respostaCliente = [];
         let isSearched = false;
 
-        for (let i = 0; i < this.hoteis.length; i++){
+        for (let i = 0; i < this.hoteis.length; i++) {
             const cidade = this.hoteis[i].cidade;
             if (cidade === buscaCidade) {
                 isSearched = true;
@@ -57,25 +58,25 @@ export default class sistemaHoteis {
         return respostaCliente.join('\n');
     };
 
-    fazerReserva (idReserva, idHotel, nomeCliente, data) {
+    fazerReserva(idReserva, idHotel, nomeCliente, data) {
         let respostaCliente = [];
         let isReserved = false;
 
-        for (let i = 0; i < this.hoteis.length; i++){
+        for (let i = 0; i < this.hoteis.length; i++) {
             if (this.hoteis[i].idHotel === idHotel && this.hoteis[i].quartosDisponiveis > 0) {
                 this.hoteis[i].quartosDisponiveis--;
 
                 isReserved = true;
 
                 respostaCliente.push(`Que bom tê-lo como cliente ${nomeCliente}! A sua reserva para o hotel ${this.hoteis[i].nome} foi confirmada para o dia ${data}. Aqui está o ID da sua reserva: ${idReserva}`);
+                
+                const novaReserva = new reserva(idReserva, idHotel, nomeCliente, data);
+                this.reservas.push(novaReserva);
             } else {
                 respostaCliente.push('Não há quartos sufientes para esse hotel! tente outro na mesma cidade.');
                 isReserved = true;
             };
         };
-        
-        const novaReserva = new reserva(idReserva, idHotel, nomeCliente, data);
-        this.reservas.push(novaReserva);
 
         if (isReserved === false) {
             respostaCliente.push('Não foi possivel fazer a reserva, o ID do hotel está errado!');
@@ -84,20 +85,20 @@ export default class sistemaHoteis {
         return respostaCliente.join('\n');
     };
 
-    cancelarReserva (idReserva, idHotel, nomeCliente, data) {
+    cancelarReserva(idReserva, idHotel, nomeCliente, data) {
         let respostaCliente = [];
         let isBooked = false;
 
-        for (let i = 0; i < this.reservas.length; i++){
+        for (let i = 0; i < this.reservas.length; i++) {
             if (this.reservas[i].idReserva === idReserva && this.reservas[i].nomeCliente === nomeCliente && this.reservas[i].data === data) {
-                for (let j = 0; j < this.hoteis.length; j++){
+                for (let j = 0; j < this.hoteis.length; j++) {
                     if (this.hoteis[j].idHotel === idHotel) {
                         this.hoteis[j].quartosDisponiveis++;
                     };
                 };
 
                 this.reservas = this.reservas.filter(reserva => reserva.idReserva !== idReserva);
-                
+
                 isBooked = true;
 
                 respostaCliente.push(`A reserva ID: ${idReserva} do dia ${data} foi cancelada com sucesso, ${nomeCliente}!`);
@@ -111,12 +112,12 @@ export default class sistemaHoteis {
         return respostaCliente.join('\n');
     };
 
-    listasReservas (nomeCliente) {
+    listasReservas(nomeCliente) {
         let respostaCliente = [];
         let isListed = false;
 
         for (let i = 0; i < this.reservas.length; i++) {
-            if (this.reservas[i].nomeCliente === nomeCliente){
+            if (this.reservas[i].nomeCliente === nomeCliente) {
                 const idHotel = this.reservas[i].idHotel;
                 const buscarHotel = this.hoteis.find(hotel => hotel.idHotel === idHotel);
 
@@ -132,4 +133,72 @@ export default class sistemaHoteis {
 
         return respostaCliente.join('\n');
     };
+
+    fazerCheckIn(nomeCliente, idReserva, data) {
+        let respostaCliente = [];
+        let isCheck = false;
+
+        for (let i = 0; i < this.reservas.length; i++) {
+            if (this.reservas[i].idReserva === idReserva && this.reservas[i].nomeCliente === nomeCliente && this.reservas[i].data === data) {
+                respostaCliente.push(`CheckIn feito! Boa estadia ${nomeCliente}, aproveite bem o hotel!`);
+                this.checkIns.push({idReserva: idReserva, isCheckIn: true})
+                isCheck = true;
+            }
+        }
+
+        if (isCheck === false) {
+            respostaCliente.push('Você não possui um checkIn nesse hotel! Faça uma reserva no campo "Fazer Reserva"');
+        }
+
+        return respostaCliente.join('\n');
+    }
+
+    fazerCheckOut(nomeCliente, idReserva, idHotel) {
+        let respostaCliente = [];
+        let isCheck = false;
+
+        for (let i = 0; i < this.reservas.length; i++) {
+            if (this.reservas[i].nomeCliente === nomeCliente && this.reservas[i].idHotel === idHotel) {
+                for (let k = 0; k < this.checkIns.length; k++) {
+                    if (this.checkIns[k].idReserva === idReserva && this.checkIns[k].isCheckIn === true) {
+                        let hotelIndex = this.hoteis.findIndex(hotel => hotel.idHotel === idHotel);
+                        
+                        if (hotelIndex !== -1) {
+                            this.hoteis[hotelIndex].quartosDisponiveis++;
+                        }
+
+                        isCheck = true;
+
+                        respostaCliente.push(`O seu checkOut está feito, espero que tenha aproveitado, ${nomeCliente}!`);
+                        this.reservas.splice(i, 1);
+                        break;
+                    }
+                };
+            };
+        };
+
+        if (isCheck === false) {
+            respostaCliente.push(`Não foi possivel efetuar o checkout, Verifique se você já fez o checkIn primeiramente ou se as informações estão corretas e tente novamente!`);
+        }
+
+        return respostaCliente.join('\n');
+    }
+
+    fazerAvaliacao(nomeCliente, nomeHotel, idHotel, estrelas) {
+        let respostaCliente = [];
+        let isAvaliated = false;
+
+        for (let i = 0; i < this.hoteis.length; i++) {
+            if (this.hoteis[i].idHotel === idHotel && this.hoteis[i].nome === nomeHotel) {
+                respostaCliente.push(`Obrigado pela avaliação de ${estrelas} estrelas, ${nomeCliente}! O hotel ${nomeHotel} agradece.`)
+                isAvaliated = true;
+            }
+        };
+
+        if (isAvaliated === false) {
+                respostaCliente.push('Não foi possível realizar a sua avaliação!')
+            }
+
+        return respostaCliente.join('\n');
+    }
 };

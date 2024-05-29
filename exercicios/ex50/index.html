@@ -132,13 +132,95 @@
                 </div>
             </div>
         </section>
+
+        <section>
+            <h2>Check-in</h2>
+            <div class="container-infos">
+                <form id="formCheckIn">
+                    <div class="inputData">
+                        <label>Seu nome:</label>
+                        <input type="text" name="nameClient" placeholder="Digite o seu nome">
+                    </div>
+                    <div class="inputData">
+                        <label>id da Reserva:</label>
+                        <input type="text" name="idReserva" placeholder="Digite o id da reserva">
+                    </div>
+                    <div class="inputData">
+                        <label>Data de Check-in:</label>
+                        <input type="date" name="bookedDate">
+                    </div>
+                    <button type="submit">Fazer Check-in</button>
+                </form>
+
+                <div class="boxResposta">
+                    <p id="respCheckIn">Aguarde aqui sua resposta...</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Check-out</h2>
+            <div class="container-infos">
+                <form id="formCheckOut">
+                    <div class="inputData">
+                        <label>Seu nome:</label>
+                        <input type="text" name="nameClient" placeholder="Digite o seu nome">
+                    </div>
+                    <div class="inputData">
+                        <label>id da Reserva:</label>
+                        <input type="text" name="idReserva" placeholder="Digite o id da reserva">
+                    </div>
+                    <div class="inputData">
+                        <label>id do Hotel:</label>
+                        <input type="text" name="idHotel" placeholder="Digite o id do hotel">
+                    </div>
+                    <button type="submit">Fazer Check-out</button>
+                </form>
+
+                <div class="boxResposta">
+                    <p id="respCheckOut">Aguarde aqui sua resposta...</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Avaliação de hotel</h2>
+            <div class="container-infos">
+                <form id="formAvaliacao">
+                    <div class="inputData">
+                        <label>Seu nome:</label>
+                        <input type="text" name="nameClient" placeholder="Digite o seu nome">
+                    </div>
+                    <div class="inputData">
+                        <label>Nome do Hotel:</label>
+                        <input type="text" name="nomeHotel" placeholder="Digite o nome do hotel">
+                    </div>
+                    <div class="inputData">
+                        <label>id do Hotel:</label>
+                        <input type="text" name="idHotel" placeholder="Digite o id do hotel">
+                    </div>
+                    <div class="inputData">
+                        <label>Quantas Estrelas:</label>
+                        <input type="number" name="estrelas" min="0" max="5">
+                    </div>
+                    <button type="submit">Avaliar</button>
+                </form>
+
+                <div class="boxResposta">
+                    <p id="respAvaliacao">Aguarde aqui sua resposta...</p>
+                </div>
+            </div>
+        </section>
     </main>
     <footer id="rodape">
         <p>Desenvolvido por Lucas Balbueno</p>
-        <a href="https://www.linkedin.com/in/lucasbalbueno/" target="_blank"><img src="./src/images/linkedinLogo.png" alt="Logo Linkedin"></a>
-        <a href="https://github.com/LucasBalbueno" target="_blank"><img src="./src/images/githubLogo.png" alt="Logo GitHub"></a>
+        <a href="https://www.linkedin.com/in/lucasbalbueno/" target="_blank"><img src="./src/images/linkedinLogo.png"
+                alt="Logo Linkedin"></a>
+        <a href="https://github.com/LucasBalbueno" target="_blank"><img src="./src/images/githubLogo.png"
+                alt="Logo GitHub"></a>
     </footer>
 
     <script type="module" src="./src/js/index.js"></script>
 </body>
+
 </html>

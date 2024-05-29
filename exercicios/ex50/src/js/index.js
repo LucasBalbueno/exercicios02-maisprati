@@ -116,3 +116,69 @@ formListarReservas.addEventListener('submit', (event) => {
     formListarReservas.reset();
     respListarReservas.innerText = resposta;
 });
+
+const formCheckIn = document.getElementById('formCheckIn');
+const respCheckIn = document.getElementById('respCheckIn');
+
+formCheckIn.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const nomeCliente = formCheckIn.elements['nameClient'].value;
+    const idReserva = Number(formCheckIn.elements['idReserva'].value);
+    const data = formCheckIn.elements['bookedDate'].value;
+
+    let resposta;
+
+    if (nomeCliente === "" || idReserva === "" || data === "") {
+        resposta = 'Informações insuficientes';
+    } else {
+        resposta = sistema.fazerCheckIn(nomeCliente, idReserva, data);
+    }
+
+    formCheckIn.reset();
+    respCheckIn.innerText = resposta;
+})
+const formCheckOut = document.getElementById('formCheckOut');
+const respCheckOut = document.getElementById('respCheckOut');
+
+formCheckOut.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const nomeCliente = formCheckOut.elements['nameClient'].value;
+    const idReserva = Number(formCheckOut.elements['idReserva'].value);
+    const idHotel = Number(formCheckOut.elements['idHotel'].value);
+
+    let resposta;
+
+    if (nomeCliente === "" || idHotel === "") {
+        resposta = 'Informações insuficientes';
+    } else {
+        resposta = sistema.fazerCheckOut(nomeCliente, idReserva, idHotel);
+    }
+
+    formCheckOut.reset();
+    respCheckOut.innerText = resposta;
+})
+
+const formAvaliacao = document.getElementById('formAvaliacao');
+const respAvaliacao = document.getElementById('respAvaliacao');
+
+formAvaliacao.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const nomeCliente = formAvaliacao.elements['nameClient'].value;
+    const nomeHotel = formAvaliacao.elements['nomeHotel'].value;
+    const idHotel = Number(formAvaliacao.elements['idHotel'].value);
+    const estrelas = formAvaliacao.elements['estrelas'].value;
+
+    let resposta;
+
+    if (nomeCliente === "" || nomeHotel === "" || idHotel === "" || estrelas === "") {
+        resposta = 'Informações insuficientes';
+    } else {
+        resposta = sistema.fazerAvaliacao(nomeCliente, nomeHotel, idHotel, estrelas);
+    }
+
+    formAvaliacao.reset();
+    respAvaliacao.innerText = resposta;
+})

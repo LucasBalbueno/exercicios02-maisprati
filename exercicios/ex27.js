@@ -11,7 +11,7 @@ let V = [];
 for (let i = 0; i < lines; i++){
     for (let j = 0; j < columns; j++){
         const num = matriz[i][j] * A;
-        V.push(num.toFixed(2));
+        V.push(num);
     };
 };
 

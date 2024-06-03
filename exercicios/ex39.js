@@ -2,7 +2,7 @@ const prompt = require('prompt-sync')();
 
 let A = [];
 
-for (let i = 0; i < 10; i++){
+for (let i = 0; i < 100; i++){
      const value = Number(prompt(`Digite o ${i + 1}º valor: `));
      A.push(value);
 };

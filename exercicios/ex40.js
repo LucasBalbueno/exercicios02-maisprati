@@ -24,6 +24,7 @@ for (let i = 0; i < 50; i++){
 
     if (cont === 5) {
         console.log('Ganhador');
+        break
     } else {
         console.log('Não foi dessa vez!');
         console.log('Próximo!');

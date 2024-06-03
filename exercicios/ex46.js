@@ -1,4 +1,4 @@
-const sales = [{ vendedor: "João", valor: 500.00 }, { vendedor: "Maria", valor: 750.00 }, { vendedor: "João", valor: 300.00 }, { vendedor: "Ana", valor: 1200.00 }, { vendedor: "Maria", valor: 450.00 }];
+const sales = [{ vendedor: "Joao", valor: 500.00 }, { vendedor: "Maria", valor: 750.00 }, { vendedor: "João", valor: 300.00 }, { vendedor: "Ana", valor: 1200.00 }, { vendedor: "Maria", valor: 450.00 }];
 
 function calcSales(sales) {
     const resumeObj = {};

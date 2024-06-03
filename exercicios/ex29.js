@@ -26,9 +26,9 @@ for (let i = 0; i < lines; i++){
     };
 };
 
-console.log(`Soma da linha 4 da matriz: ${sumLine4.toFixed(2)}`);
-console.log(`Soma da coluna 2 da matriz: ${sumColumn2.toFixed(2)}`);
-console.log(`Soma da diagonal principal: ${sumDiag.toFixed(2)}`);
-console.log(`Soma de todos os elementos da matriz: ${sumMatriz.toFixed(2)}`);
+console.log(`Soma da linha 4 da matriz: ${sumLine4}`);
+console.log(`Soma da coluna 2 da matriz: ${sumColumn2}`);
+console.log(`Soma da diagonal principal: ${sumDiag}`);
+console.log(`Soma de todos os elementos da matriz: ${sumMatriz}`);
 
 console.table(matriz)

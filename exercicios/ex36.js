@@ -16,24 +16,22 @@ function readAnswer (template) {
 
     for (let i = 0; i < 100; i++){
         numCard = prompt('Digite o número do seu cartão de aposta (5 digitos): ');
+    
         for (let j = 0; j < 13; j++) {
             const num = Number(prompt(`Digite sua ${j + 1}º resposta: `));
             answer.push(num);
-        }
-
+        };
+    
         let cont = 0;
-
+    
         for (let k = 0; k < answer.length; k++){
-            for (let l = 0; l < template.length; l++){
-                if (template[l] === answer[k]) {
-                    cont++;
-                    break;
-                };
+            if (template[k] === answer[k]) {
+                cont++;
             };
         };
-
+    
         answer = [];
-
+    
         if (cont === 13) {
             console.log('Parabéns, tu foi o GANHADOR.');
             break;

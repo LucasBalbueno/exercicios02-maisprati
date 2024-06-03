@@ -17,13 +17,13 @@ formAdicionaHotel.addEventListener('submit', (event) => {
     const quartosDisponiveis = formAdicionaHotel.elements['availableRooms'].value;
 
     let resposta;
-
+    
     if (nome === '' || cidade === '' || quartosTotais === '' || quartosDisponiveis === '') {
         resposta = 'Informações insuficientes';
     } else {
         resposta = sistema.adicionaHotel(idHotel, nome, cidade, quartosTotais, quartosDisponiveis);
     };
-
+    
     formAdicionaHotel.reset();
     respAdicionaHotel.innerText = resposta;
 });
@@ -133,11 +133,12 @@ formCheckIn.addEventListener('submit', (event) => {
         resposta = 'Informações insuficientes';
     } else {
         resposta = sistema.fazerCheckIn(nomeCliente, idReserva, data);
-    }
+    };
 
     formCheckIn.reset();
     respCheckIn.innerText = resposta;
-})
+});
+
 const formCheckOut = document.getElementById('formCheckOut');
 const respCheckOut = document.getElementById('respCheckOut');
 
@@ -154,11 +155,11 @@ formCheckOut.addEventListener('submit', (event) => {
         resposta = 'Informações insuficientes';
     } else {
         resposta = sistema.fazerCheckOut(nomeCliente, idReserva, idHotel);
-    }
+    };
 
     formCheckOut.reset();
     respCheckOut.innerText = resposta;
-})
+});
 
 const formAvaliacao = document.getElementById('formAvaliacao');
 const respAvaliacao = document.getElementById('respAvaliacao');
@@ -177,8 +178,8 @@ formAvaliacao.addEventListener('submit', (event) => {
         resposta = 'Informações insuficientes';
     } else {
         resposta = sistema.fazerAvaliacao(nomeCliente, nomeHotel, idHotel, estrelas);
-    }
+    };
 
     formAvaliacao.reset();
     respAvaliacao.innerText = resposta;
-})
+});

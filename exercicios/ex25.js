@@ -22,12 +22,12 @@ function sumColumns (matriz) {
 
 function showSum (sum, columns) {
     for (let j = 0; j < columns; j++){
-        console.log(`A soma da coluna ${j + 1}: ${sum[j].toFixed(2)}`);
+        console.log(`A soma da coluna ${j + 1}: ${sum[j]}`);
     };
 };
 
-const numLines = 3;
-const numColumns = 3;
+const numLines = 15;
+const numColumns = 20;
 
 const matriz = generateMatriz(numLines, numColumns);
 const sum = sumColumns(matriz);

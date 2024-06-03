@@ -8,11 +8,11 @@ const multiplyingValue = (value) => {
     return num * value;
 };
 
-function transformObject(obj, multiplying) {
+function transformObject(obj, funX) {
     const newObj = {};
 
     for (let key in obj) {
-        newObj[key] = multiplying(obj[key]);
+        newObj[key] = funX(obj[key]);
     };
 
     return newObj;

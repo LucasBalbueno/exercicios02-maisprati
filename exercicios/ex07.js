@@ -20,7 +20,7 @@ while (isNaN(distance) === true || distance <= 0) {
 
 if (typeCar === 'popular') {
     const daily = days * 90;
-    console.log(`A sua diária custará R$${daily.toFixed(2)}.`);
+    console.log(`O total da sua diária custará R$${daily.toFixed(2)}.`);
 
     if (distance <= 100) {
         const pricePerDistance = distance * 0.20;
@@ -35,7 +35,7 @@ if (typeCar === 'popular') {
 
 if (typeCar === 'luxo') {
     const daily = days * 150;
-    console.log(`A sua diária custará R$${daily.toFixed(2)}.`);
+    console.log(`O total da sua diária custará R$${daily.toFixed(2)}.`);
 
     if (distance <= 200) {
         const pricePerDistance = distance * 0.30;

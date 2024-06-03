@@ -13,4 +13,4 @@ const calculaVida = () => {
     return DiasPerdido;
 }
 
-console.log(`Você já perdeu ${calculaVida().toFixed(1)} dias por fumar`)
+console.log(`Você já perdeu ${Math.trunc(calculaVida())} dias por fumar`)

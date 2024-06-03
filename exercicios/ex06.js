@@ -14,8 +14,6 @@ function verificaCampeao (comp, user) {
     } else {
         console.log(`O número era ${comp}, você errou!!`);
     }
-
-    console.log('aqui funciona!')
 }
 
 verificaCampeao(numComp, numUser);

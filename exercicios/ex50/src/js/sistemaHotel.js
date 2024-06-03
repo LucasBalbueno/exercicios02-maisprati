@@ -21,19 +21,15 @@ export default class sistemaHoteis {
     constructor() {
         this.hoteis = [];
         this.reservas = [];
-        this.checkIns =[];
+        this.checkIns = [];
     };
 
     adicionaHotel(id, nome, cidade, quartosTotais, quartosDisponiveis) {
         let respostaCliente = [];
 
-        if (quartosTotais >= quartosDisponiveis) {
-            const novoHotel = new hotel(id, nome, cidade, quartosTotais, quartosDisponiveis);
-            this.hoteis.push(novoHotel);
-            respostaCliente.push(`O hotel ${novoHotel.nome} com ${quartosTotais} quartos ao total e localizado em ${novoHotel.cidade} foi adicionado a lista com o ID: ${novoHotel.idHotel}!`);
-        } else {
-            respostaCliente.push('O hotel não pode ter mais quartos disponíveis que o número total de quartos.');
-        }
+        const novoHotel = new hotel(id, nome, cidade, quartosTotais, quartosDisponiveis);
+        this.hoteis.push(novoHotel);
+        respostaCliente.push(`O hotel ${novoHotel.nome} com ${quartosTotais} quartos ao total e localizado em ${novoHotel.cidade} foi adicionado a lista com o ID: ${novoHotel.idHotel}!`);
 
         return respostaCliente.join('\n');
     };
@@ -69,7 +65,7 @@ export default class sistemaHoteis {
                 isReserved = true;
 
                 respostaCliente.push(`Que bom tê-lo como cliente ${nomeCliente}! A sua reserva para o hotel ${this.hoteis[i].nome} foi confirmada para o dia ${data}. Aqui está o ID da sua reserva: ${idReserva}`);
-                
+
                 const novaReserva = new reserva(idReserva, idHotel, nomeCliente, data);
                 this.reservas.push(novaReserva);
             } else {
@@ -141,7 +137,7 @@ export default class sistemaHoteis {
         for (let i = 0; i < this.reservas.length; i++) {
             if (this.reservas[i].idReserva === idReserva && this.reservas[i].nomeCliente === nomeCliente && this.reservas[i].data === data) {
                 respostaCliente.push(`CheckIn feito! Boa estadia ${nomeCliente}, aproveite bem o hotel!`);
-                this.checkIns.push({idReserva: idReserva, isCheckIn: true})
+                this.checkIns.push({ idReserva: idReserva, isCheckIn: true })
                 isCheck = true;
             }
         }
@@ -162,7 +158,7 @@ export default class sistemaHoteis {
                 for (let k = 0; k < this.checkIns.length; k++) {
                     if (this.checkIns[k].idReserva === idReserva && this.checkIns[k].isCheckIn === true) {
                         let hotelIndex = this.hoteis.findIndex(hotel => hotel.idHotel === idHotel);
-                        
+
                         if (hotelIndex !== -1) {
                             this.hoteis[hotelIndex].quartosDisponiveis++;
                         }
@@ -172,17 +168,17 @@ export default class sistemaHoteis {
                         respostaCliente.push(`O seu checkOut está feito, espero que tenha aproveitado, ${nomeCliente}!`);
                         this.reservas.splice(i, 1);
                         break;
-                    }
+                    };
                 };
             };
         };
 
         if (isCheck === false) {
             respostaCliente.push(`Não foi possivel efetuar o checkout, Verifique se você já fez o checkIn primeiramente ou se as informações estão corretas e tente novamente!`);
-        }
+        };
 
-        return respostaCliente.join('\n');
-    }
+        return respostaCliente.join('\n');;
+    };
 
     fazerAvaliacao(nomeCliente, nomeHotel, idHotel, estrelas) {
         let respostaCliente = [];
@@ -190,15 +186,15 @@ export default class sistemaHoteis {
 
         for (let i = 0; i < this.hoteis.length; i++) {
             if (this.hoteis[i].idHotel === idHotel && this.hoteis[i].nome === nomeHotel) {
-                respostaCliente.push(`Obrigado pela avaliação de ${estrelas} estrelas, ${nomeCliente}! O hotel ${nomeHotel} agradece.`)
+                respostaCliente.push(`Obrigado pela avaliação de ${estrelas} estrelas, ${nomeCliente}! O hotel ${nomeHotel} agradece.`);
                 isAvaliated = true;
-            }
+            };
         };
 
         if (isAvaliated === false) {
-                respostaCliente.push('Não foi possível realizar a sua avaliação!')
-            }
+            respostaCliente.push('Não foi possível realizar a sua avaliação!');
+        };
 
         return respostaCliente.join('\n');
-    }
+    };
 };
